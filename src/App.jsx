@@ -18,10 +18,13 @@ const App = () => {
     fetchQuizData();
   }, []); // Run only once on component mount
 
+  
   return (
     <div className="App">
+         <div className="container">
       <h1>Music Quiz</h1>
       {quizData ? <QuizApp quizData={quizData} /> : <p>Loading quiz...</p>}
+      </div>
     </div>
   );
 };
