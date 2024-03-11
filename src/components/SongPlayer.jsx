@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import replaybtnimage from '../assets/replaybtn.svg'; 
 
   const SongPlayer = ({ songUrl }) => {
   const audioRef = useRef(null);
@@ -54,8 +55,24 @@ import React, { useEffect, useRef, useState } from 'react';
         <source src={songUrl} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-      <button className='replay-btn' onClick={handleReplay} disabled={isPlaying}>
-        {isPlaying ? 'Playing...' : 'Replay'}
+      <button 
+      className='replay-btn' 
+      onClick={handleReplay} 
+      disabled={isPlaying}
+      style={{
+        display: 'flex', // Flex to align items
+        alignItems: 'center', // Center vertically
+      }}
+      >
+      Replay 
+      <img 
+      src={replaybtnimage}
+      alt=""
+      style={{
+        marginLeft: '10px', // Space between text and image
+        height: '20px', // Adjust height of the image
+      }}
+      />
       </button>
     </div>
   );

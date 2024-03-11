@@ -95,7 +95,7 @@
 
   /* Normal Replay Button */
 .replay-btn {
-    background-color: #2563EB; 
+    background-color: #1d4ed8; 
     color: #FFFFFF; 
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -105,7 +105,7 @@
   }
   
   .replay-btn:hover {
-    background-color: #1d4ed8; 
+    background-color: #2563EB; 
   }
   
   .replay-btn:disabled {
