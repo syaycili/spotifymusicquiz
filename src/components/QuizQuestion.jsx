@@ -10,9 +10,9 @@ const QuizQuestion = ({ questionData, onAnswer }) => {
   return (
     <div className="question">
       <h2>{id}. Guess the Song by {artist}</h2>
-      <ul>
+      <ul className='options'>
         {options.map((option, index) => (
-          <li key={index} onClick={() => handleClick(option)}>
+          <li className='option' key={index} onClick={() => handleClick(option)}>
             {option}
           </li>
         ))}

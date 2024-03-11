@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './styles/App.css'
 import QuizApp from './components/QuizApp';
 
 const App = () => {
@@ -21,8 +22,8 @@ const App = () => {
   
   return (
     <div className="App">
-         <div className="container">
-      <h1>Music Quiz</h1>
+      <div className="container">
+      <h1 className='heading'>Music Quiz</h1>
       {quizData ? <QuizApp quizData={quizData} /> : <p>Loading quiz...</p>}
       </div>
     </div>

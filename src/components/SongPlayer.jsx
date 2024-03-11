@@ -54,8 +54,8 @@ import React, { useEffect, useRef, useState } from 'react';
         <source src={songUrl} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-      <button onClick={handleReplay} disabled={isPlaying}>
-        {isPlaying ? 'Playing...' : 'Replay Last 5 Seconds'}
+      <button className='replay-btn' onClick={handleReplay} disabled={isPlaying}>
+        {isPlaying ? 'Playing...' : 'Replay'}
       </button>
     </div>
   );

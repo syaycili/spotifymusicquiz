@@ -36,7 +36,7 @@ const QuizApp = ({ quizData }) => {
     <div className="quiz-container">
       {!quizStarted ? (
         <div className="start-quiz">
-          <button onClick={startQuiz}>Start Quiz</button>
+          <button className='button' onClick={startQuiz}>Start Quiz</button>
         </div>
       ) : (
         <>
@@ -44,7 +44,7 @@ const QuizApp = ({ quizData }) => {
             <div className="result">
               <h2>Quiz Complete!</h2>
               <p>Your Score: {score} / {quizData.length}</p>
-              <button onClick={restartQuiz}>Restart Quiz</button>
+              <button className='restart-button' onClick={restartQuiz}>Restart Quiz</button>
             </div>
           ) : (
             <>
