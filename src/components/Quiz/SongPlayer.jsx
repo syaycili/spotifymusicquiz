@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import replaybtnimage from '../assets/replaybtn.svg'; 
+import replaybtnimage from '../../assets/replaybtn.svg'; 
 
   const SongPlayer = ({ songUrl }) => {
   const audioRef = useRef(null);
