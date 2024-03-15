@@ -1,0 +1,26 @@
+.baslabtndiv{
+    width: 100%;
+    max-width: 640px;
+}
+
+.cizgi{
+background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%);
+color: white;            
+box-shadow: 0 0 18px #ffffff15;
+background-position: right center; 
+background-size: 200% auto;
+
+}
+
+.baslabtn{
+    background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    background-position: right center; 
+    
+}
+.baslabtn:hover{
+    background-image: linear-gradient(to right, #4e728b 0%, #4e4376  20%, #406a85  100%);
+}   

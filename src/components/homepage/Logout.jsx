@@ -1,11 +1,10 @@
 function Logout() {
     const logout = () => {
+        setToken("")
         window.localStorage.removeItem("token")
     }
     return (
-        <div>
-             <button onClick={logout}>Logout</button>
-        </div> 
+        <button onClick={logout}>Logout</button>
     );
 }
 

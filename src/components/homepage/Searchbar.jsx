@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Searchbar = ({ token }) => {
+const Searchbar = ({ token, setSelectedArtistId }) => {
   const [searchKey, setSearchKey] = useState('');
   const [artists, setArtists] = useState([]);
 
@@ -14,7 +14,8 @@ const Searchbar = ({ token }) => {
           },
           params: {
             q: searchKey,
-            type: "artist"
+            type: "artist",
+            limit: 3,
           }
         });
         setArtists(data.artists.items);
@@ -32,47 +33,36 @@ const Searchbar = ({ token }) => {
 
   const renderArtists = () => {
     return artists.map((artist) => (
-      <div key={artist.id} className="bg-gray-800 p-4 rounded-lg shadow-lg mb-4">
-        <div className="flex items-center">
-          {artist.images.length ? (
-            <img className="h-16 w-16 mr-4 rounded-full" src={artist.images[0].url} alt={artist.name} />
-          ) : (
-            <div className="h-16 w-16 mr-4 rounded-full bg-gray-600"></div>
-          )}
-          <div className="text-white">{artist.name}</div>
-        </div>
+      <div key={artist.id} className="flex items-center bg-gray-700 p-4 shadow-lg hover:bg-gray-600 cursor-pointer" onClick={() => setSelectedArtistId(artist.id)}>
+        <img src={artist.images[0].url} alt={artist.name} className="w-10 h-10 rounded-full mr-3" />
+        <h2 className="text-lg font-semibold">{artist.name}</h2>
       </div>
     ));
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <div className="mx-auto rounded shadow divide-y-2 divide-gray-800">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           setSearchKey(e.target.search.value);
         }}
-        className="flex items-center justify-center mb-8"
+        className='divide-y'
       >
         <input
           type="text"
           name="search"
           value={searchKey}
           onChange={(e) => setSearchKey(e.target.value)}
-          placeholder="Search for artists..."
-          className="px-4 py-2 rounded-l-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring focus:ring-blue-400"
+          placeholder="🔍 Sanatçı Ara..."
+          className="w-full px-4 py-3 bg-gray-800 focus:bg-gray-700 text-white placeholder-gray-400 outline-none"
         />
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-r-full text-white font-semibold">
-          Search
-        </button>
       </form>
 
-      <div>
+      <div className='divide-y-2 divide-gray-800'>
         {artists.length > 0 ? (
           renderArtists()
-        ) : (
-          <div className="invisible"></div>
-        )}
+        ) : ("")}
       </div>
     </div>
   );

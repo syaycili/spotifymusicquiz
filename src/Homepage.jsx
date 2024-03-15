@@ -1,51 +1,42 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import Searchbar from './components/homepage/Searchbar';
-import Logout from './components/homepage/Logout';
+import MostListened from './components/homepage/Mostlistened';
+import SelectedArtist from './components/homepage/SelectedArtist';
+import './styles/homepage.css';
 
 const Homepage = ({token}) => {
-  
+  const [selectedArtistId, setSelectedArtistId] = useState(null);
+
+  const navigate = useNavigate();
+
   return (
     <div>
-      {/* Featured Cards */}
-      <section className="px-4 py-8 max-w-screen-lg mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* Featured Card 1 */}
-          <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-            <h2 className="text-lg font-semibold mb-2">Featured Card 1</h2>
-            <p className="text-sm">Description of the featured content.</p>
-          </div>
-
-          {/* Featured Card 2 */}
-          <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-            <h2 className="text-lg font-semibold mb-2">Featured Card 2</h2>
-            <p className="text-sm">Description of the featured content.</p>
-          </div>
-
-          {/* Featured Card 3 */}
-          <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-            <h2 className="text-lg font-semibold mb-2">Featured Card 3</h2>
-            <p className="text-sm">Description of the featured content.</p>
-          </div>
+      <section className="p-4 mx-auto">
+        <div className="mx-auto">
+          <Searchbar token={token} setSelectedArtistId={setSelectedArtistId}/>
         </div>
       </section>
 
-      {/* Search Bar */}
-      <section className="px-4 py-6 max-w-screen-lg mx-auto">
-        <div className="max-w-md mx-auto">
-          <Searchbar token={token} />
+      <section className="p-4 mx-auto">
+        <div className="mx-auto">
+          {selectedArtistId ? <SelectedArtist token={token} artistId={selectedArtistId}/> : <div></div>}
         </div>
       </section>
 
-      {/* Random Button */}
-      <section className="px-4 py-2 flex justify-center max-w-screen-lg mx-auto">
-        <button className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-full text-white font-semibold">
-          Random
-        </button>
+      <section className="px-4 mx-auto">
+        <div className="grid grid-cols-1 gap-4">
+        <MostListened token={token} setSelectedArtistId={setSelectedArtistId}/>
+        </div>
       </section>
 
-      {/* Footer */}
-      <footer className="text-center py-4 max-w-screen-lg mx-auto">
-        <p>&copy; 2024 Music App. All rights reserved.</p>
+      <div className='baslabtndiv fixed bottom-5 px-4'>
+{selectedArtistId ? 
+<button className='baslabtn bg-gray-700 px-6 py-4 rounded-full text-white font-semibold shadow-lg w-full'
+onClick={() => navigate('/quiz', { state: { artistId: selectedArtistId } })}
+>Başla</button> : <div></div>}
+      </div>
+      <footer className="text-center py-4 max-w-screen-lg mx-auto py-9">
       </footer>
     </div>
   );

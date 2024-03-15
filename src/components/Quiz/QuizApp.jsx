@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import QuizQuestion from './QuizQuestion';
 import SongPlayer from './SongPlayer';
@@ -6,7 +7,8 @@ const QuizApp = ({ quizData }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [quizStarted, setQuizStarted] = useState(false);
+  const [quizStarted, setQuizStarted] = useState(true);
+  const navigate = useNavigate();
 
   const handleAnswer = (answer) => {
     if (answer == quizData[currentQuestion].answers) {
@@ -44,7 +46,10 @@ const QuizApp = ({ quizData }) => {
             <div className="result">
               <h2>Quiz Complete!</h2>
               <p>Your Score: {score} / {quizData.length}</p>
-              <button className='restart-button' onClick={restartQuiz}>Restart Quiz</button>
+              <div>
+              <button className='restart-button mx-2' onClick={restartQuiz}>Tekrar Dene</button>
+              <button className='restart-button mx-2' onClick={() => navigate('/')}>Yeni Quiz</button>
+              </div>
             </div>
           ) : (
             <>
