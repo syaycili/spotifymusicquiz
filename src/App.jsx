@@ -13,23 +13,35 @@ const App = () => {
   const [token, setToken] = useState("")
 
   useEffect(() => {
-      const hash = window.location.hash
-      let token = window.localStorage.getItem("token")
+    const hash = window.location.hash;
+    let storedToken = window.localStorage.getItem("token");
+    let tokenExpiration = window.localStorage.getItem("tokenExpiration");
 
-      if (!token && hash) {
-          token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+    if (!storedToken && hash) {
+      storedToken = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
+      tokenExpiration = new Date().getTime() + 15 * 60 * 1000; // 15 minutes in milliseconds
 
-          window.location.hash = ""
-          window.localStorage.setItem("token", token)
-      }
+      window.location.hash = "";
+      window.localStorage.setItem("token", storedToken);
+      window.localStorage.setItem("tokenExpiration", tokenExpiration);
+    }
 
-  setToken(token)
+    if (tokenExpiration && new Date().getTime() > tokenExpiration) {
+      // Token has expired, clear it from localStorage
+      storedToken = "";
+      tokenExpiration = null;
+      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("tokenExpiration");
+    }
 
-  }, [])
+    setToken(storedToken);
+
+  }, []);
 
   const logout = () => {
-    setToken("")
-    window.localStorage.removeItem("token")
+    setToken("");
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("tokenExpiration");
   }
 
   return (
@@ -37,8 +49,8 @@ const App = () => {
       {token ?
         <Router>
           <header className="flex justify-between items-center py-4 px-4 mx-auto">
-            <h1 className="text-2xl font-bold">quiz.musiki.xyz</h1>
-            <div className="text-gray-400"><button onClick={logout}>Logout</button></div>
+            <h1 className="text-2xl font-bold"><a href={import.meta.env.VITE_ROOT_URL}>{import.meta.env.VITE_APP_NAME}</a></h1>
+            <div className="text-gray-400"><button onClick={logout}>Çıkış Yap</button></div>
           </header>
           <Routes>
             <Route path="/quiz" element={<QuizLoad token={token}/>} />

@@ -6,7 +6,7 @@ import "./styles/login.css";
 function Login() {
   
   const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLI_ID
-  const REDIRECT_URI = "http://localhost:5173/"
+  const REDIRECT_URI = import.meta.env.VITE_ROOT_URL
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
   const scopes = 'user-top-read';

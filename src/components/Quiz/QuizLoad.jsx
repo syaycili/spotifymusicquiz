@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './QuizLoad.css'
 import QuizApp from './QuizApp';
+import Loading from './Loading';
 
 const QuizLoad = ({token}) => {
   const location = useLocation();
   const artistId = location.state.artistId;
-
-
+  const [oneAlbumData, setOneAlbumData] = useState();
   const [questions, setQuestions] = useState();
 
   useEffect(() => {
@@ -20,8 +20,12 @@ const QuizLoad = ({token}) => {
           },
         });
         const albumsData = await albumsResponse.json();
+        
+        if (albumsData.items.length > 0) {
+          const randomIndex = Math.floor(Math.random() * albumsData.items.length);
+          setOneAlbumData(albumsData.items[randomIndex]);
+        }
 
-        // Fetch the tracks of each album
         const allTracks = [];
         for (let album of albumsData.items) {
           const tracksResponse = await fetch(`https://api.spotify.com/v1/albums/${album.id}/tracks`, {
@@ -63,7 +67,6 @@ const QuizLoad = ({token}) => {
             answers: [track.name],
           };
         });
-
         setQuestions(generatedQuestions);
       } catch (error) {
         console.error('Error fetching questions:', error);
@@ -73,12 +76,13 @@ const QuizLoad = ({token}) => {
     fetchQuestions();
   }, []);
   
-  // {questions ? <QuizApp quizData={questions} /> : <p className='text-center'>Loading quiz...</p>}
+  //<Loading />
+  // {questions ? <QuizApp quizData={questions} ArtistId={artistId} /> : <Loading />}
   // {questions ? <pre>{JSON.stringify(questions, null, 2)} </pre> : <p className='text-center'>Loading quiz...</p>}
   return (
     <div className="QApp">
-      <div className="container">
-      {questions ? <QuizApp quizData={questions} /> : <p className='text-center'>Loading quiz...</p>}
+      <div>
+      {questions && oneAlbumData ? <QuizApp quizData={questions} ArtistId={artistId} oneAlbumData={oneAlbumData}/> : <Loading />}
       </div>
     </div>
   );

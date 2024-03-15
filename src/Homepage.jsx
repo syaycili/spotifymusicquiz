@@ -20,7 +20,7 @@ const Homepage = ({token}) => {
 
       <section className="p-4 mx-auto">
         <div className="mx-auto">
-          {selectedArtistId ? <SelectedArtist token={token} artistId={selectedArtistId}/> : <div></div>}
+          {selectedArtistId ? <SelectedArtist token={token} artistId={selectedArtistId}/> : <div><h2 className="text-xl font-semibold">Lütfen Seçim Yapınız...</h2></div>}
         </div>
       </section>
 
@@ -34,7 +34,7 @@ const Homepage = ({token}) => {
 {selectedArtistId ? 
 <button className='baslabtn bg-gray-700 px-6 py-4 rounded-full text-white font-semibold shadow-lg w-full'
 onClick={() => navigate('/quiz', { state: { artistId: selectedArtistId } })}
->Başla</button> : <div></div>}
+>Soruları Getir</button> : <div></div>}
       </div>
       <footer className="text-center py-4 max-w-screen-lg mx-auto py-9">
       </footer>

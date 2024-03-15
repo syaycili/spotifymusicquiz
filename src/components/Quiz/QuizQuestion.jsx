@@ -1,7 +1,7 @@
 import React from 'react';
 
 const QuizQuestion = ({ questionData, onAnswer }) => {
-  const { id, artist, options } = questionData;
+  const { id, options } = questionData;
 
   const handleClick = (answer) => {
     onAnswer(answer);
@@ -9,7 +9,7 @@ const QuizQuestion = ({ questionData, onAnswer }) => {
 
   return (
     <div className="question">
-      <h2>{id}. Guess the Song by {artist}</h2>
+      <h2>{id})</h2>
       <ul className='options'>
         {options.map((option, index) => (
           <li className='option' key={index} onClick={() => handleClick(option)}>

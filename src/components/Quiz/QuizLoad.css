@@ -1,12 +1,5 @@
-  .container {
-    max-width: 768px;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-
   .start-quiz{
     text-align: center;
-
   }
 
   .heading {
@@ -14,7 +7,6 @@
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
-
   }
   
   .button {

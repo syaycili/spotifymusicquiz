@@ -1,0 +1,12 @@
+.baslabtn{
+    background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #68627d;
+    background-position: right center; 
+    
+}
+.baslabtn:hover{
+    background-image: linear-gradient(to right, #4e728b 0%, #6b52c5  20%, #4e728b  100%);
+}   
