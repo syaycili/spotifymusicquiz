@@ -28,7 +28,12 @@ To get a local copy up and running, follow these simple steps:
    ```sh
    npm install
 
-3. Start the development server:
+3. Edit the environment file.:
+   
+   ```sh
+   Change .env.example to .env and add the required values!
+
+4. Start the development server:
    
    ```sh
    npm run dev
