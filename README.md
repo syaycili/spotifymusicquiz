@@ -1,6 +1,10 @@
 # Music Quiz App
 
-This is a music quiz app developed using React. Users can test their music recognition skills by listening to 5-second previews of songs and trying to guess the title.
+This is a music quiz app developed using React and Spotify API. Users can test their music recognition skills by listening to 5-second previews of songs and trying to guess the title.
+
+## Important Note:
+
+Creating games or trivia quizzes are not allowed in the Spotify API Developer Policy. So, you can not change the API to public. 
 
 ## Features
 
