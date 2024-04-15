@@ -32,12 +32,16 @@ const Searchbar = ({ token, setSelectedArtistId }) => {
   }, [searchKey, token]);
 
   const renderArtists = () => {
-    return artists.map((artist) => (
+    
+      return artists.map((artist) => (
       <div key={artist.id} className="flex items-center bg-gray-700 p-4 shadow-lg hover:bg-gray-600 cursor-pointer" onClick={() => setSelectedArtistId(artist.id)}>
+      {artist.images && artist.images[0] && artist.images[0].url && (
         <img src={artist.images[0].url} alt={artist.name} className="w-10 h-10 rounded-full mr-3" />
-        <h2 className="text-lg font-semibold">{artist.name}</h2>
+      )}          
+      <h2 className="text-lg font-semibold">{artist.name}</h2>
       </div>
-    ));
+      ));
+    
   };
 
   return (

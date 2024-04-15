@@ -1,16 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import QuizQuestion from './QuizQuestion';
-import SongPlayer from './SongPlayer';
 import SpotifyPlayer from '../SpotifyPlayer';
 import './QuizApp.css';
 import QuizQuestionCorrect from './QuizQuestionCorrect';
+import QuizQuestionTrue from './QuizQuestionTrue';
+
 
 const QuizApp = ({ quizData, ArtistId, oneAlbumData }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [showCorrect, setshowCorrect] = useState(false);
+  const [congrats, setCongrats] = useState(false);
+
+
+
   const [quizStarted, setQuizStarted] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [selectedAnswer, setselectedAnswer] = useState(null);
@@ -22,12 +27,7 @@ const QuizApp = ({ quizData, ArtistId, oneAlbumData }) => {
     setCorrectAnswer(correct); // Update correct answer
     if (answer == correct) {
       setScore(score + 1);
-      const nextQuestion = currentQuestion + 1;
-      if (nextQuestion < quizData.length) {
-        setCurrentQuestion(nextQuestion);
-      } else {
-        setShowResult(true);
-      }
+      setCongrats(true);
     }else{
       setshowCorrect(true);
     }
@@ -40,22 +40,37 @@ const QuizApp = ({ quizData, ArtistId, oneAlbumData }) => {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowResult(true);
+      setshowCorrect(false);
     }
   };
 
+
+  const dogruIlerle = () => {
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < quizData.length) {
+      setCongrats(false);
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowResult(true);
+      setCongrats(false);
+    }
+  };
+
+
   const erkenBitir = () => {
+    setshowCorrect(false);
+    console.log('Erken bitti');
     setShowResult(true);
   };
 
-  const restartQuiz = () => {
-    setCurrentQuestion(0);
-    setScore(0);
-    setShowResult(false);
-    setQuizStarted(false);
-    setCorrectAnswer(null); // Reset correct answer
-    setselectedAnswer(null); // Reset correct answer
-
-  };
+const restartQuiz = () => {
+  setCurrentQuestion(0);
+  setScore(0);
+  setShowResult(false);
+  setQuizStarted(false);
+  setCorrectAnswer(null); // Reset correct answer
+  setselectedAnswer(null); // Reset correct answer
+};
 
   const startQuiz = () => {
     setQuizStarted(true);
@@ -107,13 +122,18 @@ const QuizApp = ({ quizData, ArtistId, oneAlbumData }) => {
                  correctAnswer={correctAnswer}
                  selectedAnswer={selectedAnswer}
                />
-                ) : 
-                <div>
-                  <QuizQuestion
+                ) : congrats ? (
+                  <QuizQuestionTrue
+                  questionData={quizData[currentQuestion]}
+                  onClickNext={dogruIlerle}
+                  correctAnswer={correctAnswer}
+                />
+                ) :
+                <div className="quiz-question">
+              <QuizQuestion
                 questionData={quizData[currentQuestion]}
                 onAnswer={handleAnswer}
               />
-              <SongPlayer songUrl={quizData[currentQuestion].song} />
                 </div>
                 }
               </div>

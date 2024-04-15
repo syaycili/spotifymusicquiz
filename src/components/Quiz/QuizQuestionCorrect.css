@@ -1,20 +1,70 @@
 .correct-one {
-    background-color: #1c9c41 !important;
-    color: #cbd5e0;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+  background-color: #1c9c41 !important;
+  color: #cbd5e0;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  cursor: default !important;
+}
+.congrats {
+  color: #cbd5e0;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
   
-  .false-one {
-    background-color: rgb(185 28 28) !important;
+  background-color: #1c9c41;
+  cursor: default !important;
+  animation: congratsBG 0.3s alternate;
+}
+
+.false-one {
+  background-color: rgb(185 28 28) !important;
+  color: #cbd5e0;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  cursor: default;
+}
+.option {
+  cursor: pointer;
+}
+
+.dehiglight {
+  background-color: #2d3748 !important;
+  cursor: default;
+}
+.dehiglight-other{
+  background-color: #2d374876 ;
+  cursor: default;
+  animation: colorChange 0.3s alternate;
+  color: #cbd5e09e;
+}
+.dehiglight-other:hover{
+  background-color: #2d374876 ;
+}
+.congrats:hover{
+  background-color: #1c9c41;
+}
+
+
+@keyframes colorChange {
+  0% {
     color: #cbd5e0;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #2d3748 ;
   }
-  .option {
-    cursor: default;
+
+  100% {
+    color: #cbd5e09e;
+    background-color: #2d374876 ;
   }
+}
+@keyframes congratsBG {
+  0% {
+    background-color: #2d3748 ;
+  }
+
+  100% {
+    background-color: #1c9c41 ;
+  }
+}
