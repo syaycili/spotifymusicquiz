@@ -103,7 +103,7 @@ const restartQuiz = () => {
               <h2>Quiz Tamamlandı!</h2>
               <p>Doğru Sayın: {score} / {quizData.length} 🎉</p>
               <div>
-              <button className='restart-button mx-2' onClick={restartQuiz()}>Tekrar Dene 🔁</button>
+              <button className='restart-button mx-2' onClick={restartQuiz}>Tekrar Dene 🔁</button>
               <button className='restart-button mx-2' onClick={() => navigate('/')}>Yeni Quiz 🤩</button>
               </div>
               <div className='flex justify-between items-center py-4 text-center mt-2'>
