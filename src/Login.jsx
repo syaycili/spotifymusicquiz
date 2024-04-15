@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles/login.css";
+import gif1 from './assets/1.gif'; 
+import gif2 from './assets/2.gif'; 
 
 
 
@@ -30,12 +32,26 @@ function Login() {
 
 
       <div className="m-auto mt-10">
-        <div className="bg-gray-800 shadow-xl rounded px-8 py-4 m-auto">
-          <h1 className="text-2xl font-bold mb-2 text-start">En sevdiğin sanatçıları seç.</h1>
-          <p className="text-start text-gray-400 mb-6">En sevdiğin sanatçıların parçalarını 5 saniyelik kesitlerden tahmin et</p>
-
+        <div className="bg-gray-800 shadow-xl rounded px-8 py-4 m-auto mb-8 flex">
+          <div>
+          <h1 className="text-2xl font-bold mb-2 text-start">En sevdiğin sanatçıları seç 🤩</h1>
+          <p className="text-start text-gray-400 mb-6">En sevdiğin sanatçıların parçalarını 5 saniyelik kesitlerden tahmin et!</p>
+          </div>
+          <img src={gif1} alt="GIF Photo" style={{
+        marginLeft: '35px',
+        height: '200px', 
+          }} />
+        </div>
+        <div className="bg-gray-800 shadow-xl rounded px-8 py-4 m-auto flex">
+        <img src={gif2} alt="GIF Photo 2" style={{
+        marginRight: '35px',
+        height: '200px', 
+          }} />
+          <div>
           <h1 className="text-2xl font-bold mb-2 text-end">Cevaplar arasında doğru parçayı bul!</h1>
-          <p className="text-end text-gray-400 mb-6">En sevdiğin sanatçıların parçalarını 5 saniyelik kesitlerden tahmin et</p>
+          <p className="text-end text-gray-400 mb-6">Dinlediğin sanatçıları ne kadar tanıyorsun🤔 Sanatçının tüm parçalarından seçilmiş soruları cevapla.</p>
+          </div>
+         
         </div>
       </div>
       
