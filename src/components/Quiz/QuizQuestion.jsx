@@ -1,4 +1,5 @@
 import React from 'react';
+import SongPlayer from './SongPlayer';
 
 const QuizQuestion = ({ questionData, onAnswer }) => {
   const { id, options } = questionData;
@@ -8,8 +9,9 @@ const QuizQuestion = ({ questionData, onAnswer }) => {
   };
 
   return (
+    <div>
     <div className="question">
-      <h2>{id})</h2>
+      <div className='flex justify-between items-center mx-auto'><h2>{id})</h2></div>
       <ul className='options'>
         {options.map((option, index) => (
           <li className='option' key={index} onClick={() => handleClick(option)}>
@@ -17,6 +19,8 @@ const QuizQuestion = ({ questionData, onAnswer }) => {
           </li>
         ))}
       </ul>
+    </div>
+     <SongPlayer songUrl={questionData.song} />
     </div>
   );
 };

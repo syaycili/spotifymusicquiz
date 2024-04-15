@@ -13,7 +13,7 @@ const QuizQuestionCorrect = ({ questionData, onClickNext, correctAnswer, selecte
 
   return (
     <div className="question">
-      <h2>Soru {id}</h2>
+      <h2>{id})</h2>
       <ul className='options'>
         {options.map((option, index) => (
           <li className={option == selectedAnswer ? "option false-one bg-red-800" : option == correctAnswer ? "option correct-one" : "option"} key={index}>{option}</li>))}

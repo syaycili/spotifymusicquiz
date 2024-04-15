@@ -37,6 +37,7 @@ onClick={() => navigate('/quiz', { state: { artistId: selectedArtistId } })}
 >Soruları Getir</button> : <div></div>}
       </div>
       <footer className="text-center py-4 max-w-screen-lg mx-auto py-9">
+        <i className='text-xs'>      This application is not associated with or endorsed by Spotify or any of its affiliates</i>
       </footer>
     </div>
   );
