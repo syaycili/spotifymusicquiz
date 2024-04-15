@@ -6,18 +6,18 @@ This is a music quiz app developed using React and Spotify API. Users can test t
 
 Creating games or trivia quizzes are not allowed in the Spotify API Developer Policy. So, you can not change the API to public. 
 
-
-
-<img src="https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/1.gif" height="400">
-
-<img src="https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/1.gif" height="400">
-
-
-
 ## Features
+
+- Search or select from your favorite artists. 
+
+<img src="https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/1.gif" height="400">
 
 - Listen to 5-second song previews.
 - Guess the song.
+
+<img src="https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/2.gif" height="400">
+
+
 - Keep track of your score.
 - Select between different artists.
 
