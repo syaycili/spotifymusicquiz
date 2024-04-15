@@ -1,24 +1,50 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const MostListened = ({ token, setSelectedArtistId }) => {
     const [artists, setArtists] = useState([]);
 
     useEffect(() => {
-        const fetchMostListenedArtists = async () => {
-            try {
-                const response = await fetch('https://api.spotify.com/v1/me/top/artists?limit=3', {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                const data = await response.json();
-                setArtists(data.items);
-            } catch (error) {
-                console.error('Error fetching most listened artists:', error);
-            }
-        };
+      setArtists(
 
-        fetchMostListenedArtists();
+        [
+          {
+            "id": "0V2oXYR7DtrZAEFeILRW2r",
+            "images": [
+              {
+                "height": 640,
+                "url": "https://i.scdn.co/image/ab6761610000e5ebaf38c0565f1b25edd75334ee",
+                "width": 640
+              },
+            ],
+            "name": "Lvbel C5",
+          },
+          {
+            "id": "15AZJFNrXtIN4Nk8BIOnS2",
+            "images": [
+              {
+                "height": 640,
+                "url": "https://i.scdn.co/image/ab6761610000e5ebf014c87b59a361882b7b0d84",
+                "width": 640
+              },
+            ],
+            "name": "Batuflex",
+          },
+          {
+            "id": "6XeLF1KiaS5aBmp2d1fghp",
+            "images": [
+              {
+                "height": 640,
+                "url": "https://i.scdn.co/image/ab6761610000e5eb4970ad4aba0054c2e62172a9",
+                "width": 640
+              },
+            ],
+            "name": "rufflws",
+          }
+        ]
+
+        );
+      
     }, [token]);
 
     return (

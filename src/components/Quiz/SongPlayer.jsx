@@ -8,6 +8,7 @@ import replaybtnimage from '../../assets/replaybtn.svg';
   useEffect(() => {
     clearTimeout();
     if (audioRef.current) {
+      //console.log("Song URL: "+songUrl);
       audioRef.current.autoplay = true;
       audioRef.current.load();
       setIsPlaying(true);
