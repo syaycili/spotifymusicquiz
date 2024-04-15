@@ -7,9 +7,10 @@ This is a music quiz app developed using React and Spotify API. Users can test t
 Creating games or trivia quizzes are not allowed in the Spotify API Developer Policy. So, you can not change the API to public. 
 
 
-![](https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/1.gif | width=400)
 
-![](https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/2.gif | width=400)
+<img src="https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/1.gif" height="400">
+
+<img src="https://github.com/syaycili/spotifymusicquiz/blob/main/src/assets/1.gif" height="400">
 
 
 
